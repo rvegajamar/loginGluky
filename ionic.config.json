@@ -1,0 +1,7 @@
+{
+  "name": "loginGluky",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
