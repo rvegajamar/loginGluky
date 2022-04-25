@@ -1,17 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="danger">
     <ion-title>
-      Tab 2
+      Crear usuario
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button style="background-color: #eb445a !important;" (click)="open_menu()">
+        <ion-icon slot="icon-only" name="menu" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+  <ion-list *ngIf="cerrar == true">
+    <ion-item (click)="cerrarSesion()">
+      <ion-icon name="log-out" slot="start"></ion-icon>
+      <ion-label>Cerrar Sesión</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content>
+  <div class="div-head">
+    <div class="align-item-row">
+      <ion-img src="/assets/icon/user.png" class="img-user"></ion-img>
+      <div class="align-item-column">
+        <h3 class="text-question">¿Cuáles son tus datos?</h3>
+        <h4 class="text-user">Queremos tenerte en nuestra aplicación</h4>
+      </div>
+    </div>
+    <div class="div-line">
+    </div>
+    <h4 class="text-question">Documentos de Identidad</h4>
+  <ion-item>
+    <ion-input placeholder="Identificación*" type="number" class="text-user" [(ngModel)]="datos.identificacion" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Nombres*" class="text-user" [(ngModel)]="datos.nombres" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Apellidos*" class="text-user" [(ngModel)]="datos.apellidos" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Correo*" class="text-user" type="email" [(ngModel)]="datos.correo" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Celular*" type="number" class="text-user" [(ngModel)]="datos.celular" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label class="text-user">Rol</ion-label>
+    <ion-select placeholder="Seleccione su rol" class="text-user" [(ngModel)]="datos.rol">
+      <ion-select-option *ngFor="let rol of roles" [value]="rol">{{rol}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Contraseña*" class="text-user" [type]="hide ? 'password' : 'text'" [(ngModel)]="datos.contrasena" required></ion-input>
+     <button mat-icon-button matSuffix (click)="hide = !hide"   [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+     class="border-icon-password">
+     <ion-img src="/assets/icon/eye.png" *ngIf="hide == false"></ion-img>
+     <ion-img src="/assets/icon/visibility.png" *ngIf="hide == true"></ion-img>
+     </button>
+  </ion-item>
+  <button color="sucess" class="button-ingresar" (click)="registrar()"> Registrarse </button>
+  </div>
+  
 </ion-content>

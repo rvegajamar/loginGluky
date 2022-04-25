@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="back" (click)="back()">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="div-head">
+    <div class="align-item-row">
+      <ion-img src="/assets/icon/user.png" class="img-user"></ion-img>
+      <div class="align-item-column">
+        <h3 class="text-question">¿Cuáles son tus datos?</h3>
+        <h4 class="text-user">Queremos tenerte en nuestra aplicación</h4>
+      </div>
+    </div>
+    <div class="div-line">
+    </div>
+    <h4 class="text-question">Documentos de Identidad</h4>
+  <ion-item>
+    <ion-input placeholder="Identificación" type="number" class="text-user" [(ngModel)]="datos.identificacion"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Nombres" class="text-user" [(ngModel)]="datos.nombres"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Apellidos" class="text-user" [(ngModel)]="datos.apellidos"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Correo" class="text-user" type="email" [(ngModel)]="datos.correo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Celular" type="number" class="text-user" [(ngModel)]="datos.celular"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label class="text-user">Rol</ion-label>
+    <ion-select placeholder="Seleccione su rol" class="text-user" [(ngModel)]="datos.rol">
+      <ion-select-option *ngFor="let rol of roles" [value]="rol">{{rol}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Contraseña" class="text-user" [type]="hide ? 'password' : 'text'" [(ngModel)]="datos.contrasena"></ion-input>
+     <button mat-icon-button matSuffix (click)="hide = !hide"   [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+     class="border-icon-password">
+     <ion-img src="/assets/icon/eye.png" *ngIf="hide == false"></ion-img>
+     <ion-img src="/assets/icon/visibility.png" *ngIf="hide == true"></ion-img>
+     </button>
+  </ion-item>
+  <button color="sucess" class="button-ingresar" (click)="registrar()"> Registrarse </button>
+  </div>
+  
+</ion-content>

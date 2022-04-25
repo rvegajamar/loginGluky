@@ -1,0 +1,83 @@
+.example-boundary {
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+    border: dotted #ccc 2px;
+  }
+
+  .card{
+    position: absolute;
+    top: 300px;
+    left: 20px;
+    width: 300px;
+    cursor: pointer;
+    height: 407px;
+    padding: 17px;
+    border-radius: 17px;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+  
+    .img-close{
+      display: flex;
+      justify-content: end;
+    }
+  }
+  .close-size{ 
+    width:30px;
+  }
+
+  .align-items-row{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+  }
+
+  .icon-circle{
+    // display: block;
+    width: 37px;
+    height: 100%;
+    object-fit: inherit;
+    object-position: inherit;
+    margin-right: 10px;
+  }
+
+  .div-head{
+    padding: 51px 20px 0px 20px
+}
+
+.list-border{
+    border-radius: 25px;
+}
+
+.button{   
+    width: 93%;
+    height: 45px;
+    background: #1EEA00;
+    border-radius: 25px;
+    font-size: 22px;
+    font-family: monospace;
+    color: #004B40;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.button-actualizar{
+    margin-top: 19px;
+    margin-left: 15px;
+}
+
+h1, h3{
+    font-family: monospace;
+}
+
+.ion-list-space{
+    padding-top: 39px;
+    // position: absolute !important; 
+    // padding: 107px 0px 0px 0px !important;
+}
+
+.div-information-users{
+    margin-left: 22px;
+    position: relative;
+}

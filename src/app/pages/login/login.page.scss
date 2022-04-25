@@ -1,0 +1,58 @@
+.espacio{
+    padding-top: 142px;
+}
+
+.button{
+    
+    width: 93%;
+    height: 45px;
+    background: #1EEA00;
+    border-radius: 25px;
+    font-size: 22px;
+    font-family: monospace;
+    color: #004B40;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.button-ingresar{
+    width: 93%;
+    height: 45px;
+    border-radius: 25px;
+    background: #004B40;
+    font-size: 22px;
+    font-family: monospace;
+    color: white;
+    font-weight: 600;
+}
+
+.div-btn-login{
+    padding: 50px 10px;
+    font-family: "Montserrat" !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ion-content{ 
+    font-family:'Varela' !important; 
+    overflow: hidden;
+  }
+
+  scroll-y{
+      overflow:  hidden !important;
+  }
+
+
+.bienvenida{
+    color: #1EEA00;
+}
+h4{
+    font-size: 24px;
+    font-family: cursive;
+    text-align: center
+}
+
+.padding-div-text-welcome{
+    padding: 0px 20px;
+}

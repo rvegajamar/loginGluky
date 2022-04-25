@@ -1,17 +1,93 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+  
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>
+        Lista de usuarios
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button style="background-color: #eb445a !important;" (click)="open_menu()">
+          <ion-icon slot="icon-only" name="menu" ></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
+    <ion-list *ngIf="cerrar == true">
+      <ion-item (click)="cerrarSesion()">
+        <ion-icon name="log-out" slot="start"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
   </ion-header>
+<ion-content [fullscreen]="true" >
+  <ion-list *ngFor="let usuarios of newUsuario | slice:0:endUsuarios;"  class="ion-list-space" >
+    <div >  
+    <ion-item>
+      <ion-avatar>
+        <img src="/assets/icon/user.png">
+      </ion-avatar>
+      <div>
+        <ion-label  class="div-information-users">
+          <h2> {{usuarios.nombres}} {{usuarios.apellidos}} </h2>
+          <h3> {{usuarios.correo}} </h3>
+          <p>{{usuarios.rol}} </p>       
+        </ion-label>
+        <!-- <ion-label>{{usuarios.apellidos}} </ion-label> -->
+      </div>
+        <button  slot="end" *ngIf="rol == 1">
+          <ion-img name="create" (click)="openModal(usuarios)" src="/assets/icon/editar.png"></ion-img>
+        </button>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+        <button slot="end" *ngIf="rol == 1">
+          <ion-img name="create" (click)="eliminar(usuarios)" src="/assets/icon/borrar.png"></ion-img>
+        </button>
+    </ion-item>
+  </div>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="Procesando"
+      loadingText="Cargando más información...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
+
+<ng-container *ngIf="isModalOpen" class="example-boundary" >
+  <div class="card"  cdkDragBoundary="example-boundary"cdkDrag> 
+    <div class="img-close">
+      <ion-img class="close-size" (click)="dismissModal()" src="/assets/icon/close.png"></ion-img>
+    </div> 
+     <div>
+       <div class="align-items-row">
+         <!-- <ion-img class="icon-circle" [src]="item.url"></ion-img> -->
+         <ion-list class="list-border">
+           <ion-item>
+            <ion-input placeholder="Identificación" type="number" class="text-user" [(ngModel)]="info.identificacion"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Nombres" class="text-user" [(ngModel)]="info.nombres" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Apellidos" class="text-user" [(ngModel)]="info.apellidos" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Correo" class="text-user" type="email" [(ngModel)]="info.correo" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Celular" type="number" class="text-user" [(ngModel)]="info.celular" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="text-user">Rol</ion-label>
+            <ion-select placeholder="Seleccione su rol" class="text-user" [(ngModel)]="info.rol">
+              <ion-select-option value="Administrador">Administrador</ion-select-option>
+              <ion-select-option value="Desarrollador">Desarrollador</ion-select-option>
+              <ion-select-option value="Comercial">Comercial</ion-select-option>
+              <ion-select-option value="Call Center">Call Center</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div class="button-actualizar">
+            <button color="success" class="button" (click)="actualizar(info)">Actualizar</button>
+          </div>
+         </ion-list>
+       </div>
+     </div>    
+   </div>
+</ng-container>
